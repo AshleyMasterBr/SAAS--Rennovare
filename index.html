@@ -5,493 +5,173 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orçamento Online | Rennovare Pisos</title>
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '743224956543243');
+    fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=743224956543243&ev=PageView&noscript=1"
+    /></noscript>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
     <style>
-        :root {
-            --primary: #D4AF37; /* Dourado Premium Rennovare */
-            --primary-hover: #b59226;
-            --dark: #333333;
-            --light: #f9f9f9;
-            --white: #ffffff;
-            --shadow: 0 10px 30px rgba(0,0,0,0.1);
-        }
-
+        /* --- RESET & BASE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Open Sans', sans-serif;
-            background-color: #f4f4f4;
-            color: var(--dark);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* --- Header --- */
-        header {
-            background-color: var(--white);
-            padding: 15px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 800;
-            font-size: 1.5rem;
-            color: var(--dark);
-            text-transform: uppercase;
-            letter-spacing: -1px;
-        }
-        .logo span { color: var(--primary); }
-
-        .whatsapp-top {
-            font-weight: 600;
-            color: #25D366;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.9rem;
-        }
-
-        /* --- Hero Section --- */
-        .hero {
-            background: linear-gradient(135deg, #222 0%, #333 100%);
-            color: white;
-            padding: 60px 0 100px 0; /* Espaço extra embaixo para o card sobrepor */
-            text-align: center;
-        }
-
-        .hero h2 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-
-        .hero h1 {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 2.5rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            line-height: 1.2;
-        }
-
-        .hero p {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        /* --- Calculadora Card --- */
-        .calculator-section {
-            margin-top: -60px; /* Efeito de sobreposição */
-            padding-bottom: 60px;
-        }
-
-        .calc-card {
-            background: var(--white);
-            border-radius: 15px;
-            box-shadow: var(--shadow);
-            padding: 40px;
-            max-width: 700px;
-            margin: 0 auto;
-            position: relative;
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        @media (max-width: 768px) {
-            .form-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2rem; }
-            .calc-card { padding: 25px; }
-        }
-
-        .form-group { margin-bottom: 15px; }
+        body { font-family: 'Open Sans', sans-serif; color: #333; line-height: 1.6; background-color: #f4f4f4; }
+        h1, h2, h3 { font-family: 'Montserrat', sans-serif; font-weight: 700; }
+        .container { max-width: 600px; margin: 40px auto; padding: 20px; background: #fff; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         
-        .form-group label {
-            display: block;
-            font-weight: 700;
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
-            margin-bottom: 8px;
-            color: var(--dark);
+        :root {
+            --primary: #D4AF37; /* Dourado Premium da Rennovare */
+            --secondary: #333333; /* Cinza Escuro */
+            --bg-light: #F9F9F9;
+            --accent: #B8860B; 
         }
 
-        .form-group input, 
-        .form-group select {
-            width: 100%;
-            padding: 12px 15px;
-            border: 2px solid #eee;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-family: 'Open Sans', sans-serif;
-            transition: 0.3s;
-            background: #fff;
-            color: #555;
-        }
+        header { text-align: center; margin-bottom: 30px; }
+        header h1 { color: var(--secondary); font-size: 1.8rem; margin-top: 10px; }
+        header p { color: #666; font-size: 0.9rem; }
 
-        .form-group input:focus, 
-        .form-group select:focus {
-            border-color: var(--primary);
-            outline: none;
+        .form-group { margin-bottom: 20px; }
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: var(--secondary); }
+        input[type="number"], select {
+            width: 100%; padding: 12px; border: 2px solid #ddd; border-radius: 8px; font-size: 1rem; transition: 0.3s;
         }
+        input:focus, select:focus { border-color: var(--primary); outline: none; }
 
-        /* Checkbox Customizado */
-        .checkbox-container {
-            display: flex;
-            align-items: center;
-            background: #f8f8f8;
-            padding: 15px;
-            border-radius: 8px;
-            cursor: pointer;
-            border: 1px solid #eee;
-            transition: 0.3s;
-        }
-        .checkbox-container:hover { border-color: var(--primary); }
-        .checkbox-container input { margin-right: 10px; width: auto; transform: scale(1.2); }
-        .checkbox-container span { font-weight: 600; font-size: 0.95rem; }
-
-        /* Botão Calcular */
+        .checkbox-group { display: flex; align-items: center; gap: 10px; background: var(--bg-light); padding: 15px; border-radius: 8px; }
+        
         .btn-calc {
-            width: 100%;
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 18px;
-            font-size: 1.1rem;
-            font-weight: 800;
-            font-family: 'Montserrat', sans-serif;
-            text-transform: uppercase;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: 0.3s;
-            margin-top: 20px;
-            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+            width: 100%; background: var(--primary); color: white; border: none; padding: 15px; font-size: 1rem;
+            font-weight: 700; text-transform: uppercase; border-radius: 8px; cursor: pointer; transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
         }
+        .btn-calc:hover { background: var(--accent); transform: translateY(-2px); }
 
-        .btn-calc:hover {
-            background: var(--primary-hover);
-            transform: translateY(-2px);
+        /* MODAL */
+        #modalResult {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); align-items: center; justify-content: center; z-index: 1000;
         }
-
-        /* --- Resultado (Modal/Overlay) --- */
-        .result-overlay {
-            display: none;
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
-            background: rgba(0,0,0,0.8);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            padding: 20px;
-            backdrop-filter: blur(5px);
+        .modal-content {
+            background: white; padding: 30px; border-radius: 15px; text-align: center; max-width: 90%; width: 400px;
         }
-
-        .result-box {
-            background: white;
-            padding: 40px;
-            border-radius: 15px;
-            width: 100%;
-            max-width: 500px;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-            animation: slideUp 0.4s ease;
-        }
-
-        @keyframes slideUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        .close-btn {
-            position: absolute;
-            top: 15px; right: 20px;
-            font-size: 24px;
-            cursor: pointer;
-            color: #999;
-        }
-
-        .result-box h3 {
-            font-family: 'Montserrat', sans-serif;
-            color: #888;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 10px;
-        }
-
-        .price-tag {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 3rem;
-            font-weight: 800;
-            color: var(--primary);
-            margin-bottom: 25px;
-            line-height: 1;
-        }
-
-        .bonuses {
-            background: #f0f7f4;
-            border: 1px solid #d4edda;
-            border-radius: 8px;
-            padding: 15px;
-            margin-bottom: 25px;
-            text-align: left;
-        }
-
-        .bonus-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 8px;
-            font-size: 0.9rem;
-            color: #155724;
-        }
-        .bonus-item:last-child { margin-bottom: 0; }
-        .bonus-item i { margin-right: 8px; color: #28a745; }
-        .free-badge { background: #28a745; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; }
-
-        .btn-whatsapp {
-            display: block;
-            background: #25D366;
-            color: white;
-            padding: 16px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            transition: 0.3s;
-        }
-        .btn-whatsapp:hover { background: #1ebc57; }
-
-        .disclaimer {
-            font-size: 0.7rem;
-            color: #999;
-            margin-top: 15px;
-        }
-
-        /* Footer */
-        footer {
-            margin-top: auto;
-            background: #222;
-            color: #777;
-            text-align: center;
-            padding: 30px;
-            font-size: 0.8rem;
+        .modal-content h2 { color: var(--secondary); margin-bottom: 15px; }
+        .price-tag { font-size: 2rem; color: var(--primary); font-weight: 900; margin: 20px 0; }
+        
+        .btn-zap {
+            display: inline-block; background: #25D366; color: white; padding: 12px 25px;
+            border-radius: 50px; text-decoration: none; font-weight: 700; margin-top: 15px;
         }
     </style>
 </head>
 <body>
 
+<div class="container">
     <header>
-        <div class="container">
-            <div class="logo">RENNOVARE <span>PISOS</span></div>
-            <a href="https://wa.me/554796550517" class="whatsapp-top">
-                <i class="fab fa-whatsapp"></i> (47) 9655-0517
-            </a>
-        </div>
+        <h1>Simulador de Orçamento</h1>
+        <p>Receba uma estimativa instantânea para o seu projeto</p>
     </header>
 
-    <section class="hero">
-        <div class="container" style="display: block;">
-            <h2>Instalação em Itapema e Região</h2>
-            <h1>Renove seu ambiente com<br>Qualidade Premium</h1>
-            <p>Faça seu orçamento em 30 segundos e garanta condições exclusivas de fábrica.</p>
-        </div>
-    </section>
-
-    <section class="calculator-section">
-        <div class="container">
-            <div class="calc-card">
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label>Qual a metragem? (m²)</label>
-                        <input type="number" id="metragem" placeholder="Ex: 50">
-                    </div>
-
-                    <div class="form-group">
-                        <label>Piso atual do local?</label>
-                        <select id="piso-atual">
-                            <option value="Contrapiso">Contrapiso (Cimento)</option>
-                            <option value="Cerâmica/Porcelanato">Cerâmica / Porcelanato</option>
-                            <option value="Madeira/Taco">Madeira / Taco</option>
-                            <option value="Outro">Outro / Não sei</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>O piso está nivelado?</label>
-                        <select id="nivelamento">
-                            <option value="Não sei dizer">Não sei dizer</option>
-                            <option value="Sim, está reto">Sim, está reto</option>
-                            <option value="Não, está irregular">Não, está irregular</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label>Modelo Preferido?</label>
-                        <select id="modelo">
-                            <optgroup label="Laminados">
-                                <option value="99.90">Première (R$ 99,90/m²)</option>
-                                <option value="109.90">Classic (R$ 109,90/m²)</option>
-                                <option value="119.90">Smart (R$ 119,90/m²)</option>
-                                <option value="136.90">Eligna Wide (R$ 136,90/m²)</option>
-                                <option value="138.90">Vision (R$ 138,90/m²)</option>
-                                <option value="212.90">Impressive (R$ 212,90/m²)</option>
-                            </optgroup>
-                            <optgroup label="Vinílicos">
-                                <option value="128.90">Pix 2mm (R$ 128,90/m²)</option>
-                                <option value="129.90">Casa Grassi 2mm (R$ 129,90/m²)</option>
-                                <option value="137.90">Vinil Design 2mm (R$ 137,90/m²)</option>
-                                <option value="143.90">RealFloor 2mm (R$ 143,90/m²)</option>
-                                <option value="168.90">Casa Grassi 3mm (R$ 168,90/m²)</option>
-                                <option value="182.90">Casa Grassi 3mm Placa (R$ 182,90/m²)</option>
-                            </optgroup>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="checkbox-container">
-                        <input type="checkbox" id="rodape">
-                        <span>Incluir Rodapé (Acabamento Completo)</span>
-                    </label>
-                    <small style="color: #888; margin-left: 30px; display: block; margin-top: 5px;">*A partir de R$ 35,90/m (Opcional)</small>
-                </div>
-
-                <button class="btn-calc" onclick="calcularOrcamento()">
-                    <i class="fas fa-calculator"></i> Ver Preço Estimado
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <div id="modalResult" class="result-overlay" onclick="fecharModalSeClicarFora(event)">
-        <div class="result-box">
-            <span class="close-btn" onclick="fecharModal()">&times;</span>
-            
-            <h3>Investimento Aproximado</h3>
-            <div class="price-tag" id="valorFinal">R$ 0,00</div>
-
-            <div class="bonuses">
-                <div class="bonus-item">
-                    <span><i class="fas fa-check-circle"></i> Cola Especial</span>
-                    <span class="free-badge">GRÁTIS</span>
-                </div>
-                <div class="bonus-item">
-                    <span><i class="fas fa-check-circle"></i> Manta Acústica</span>
-                    <span class="free-badge">GRÁTIS</span>
-                </div>
-                <div class="bonus-item">
-                    <span><i class="fas fa-check-circle"></i> Mão de Obra</span>
-                    <span class="free-badge">INCLUSO</span>
-                </div>
-            </div>
-
-            <a id="linkZap" href="#" class="btn-whatsapp" target="_blank">
-                <i class="fab fa-whatsapp"></i> AGENDAR VISITA
-            </a>
-            <p class="disclaimer">*Valor estimado para fins de orçamento. Necessária visita técnica para validação final.</p>
-        </div>
+    <div class="form-group">
+        <label><i class="fas fa-ruler-combined"></i> Metragem Total (m²):</label>
+        <input type="number" id="metragem" placeholder="Ex: 35" min="1">
     </div>
 
-    <footer>
-        <p>RENNOVARE PISOS © Todos os direitos reservados.</p>
-        <p style="font-size: 10px; margin-top: 5px;">Desenvolvido por Legado Performance</p>
-    </footer>
+    <div class="form-group">
+        <label><i class="fas fa-layer-group"></i> Modelo de Piso:</label>
+        <select id="modelo">
+            <option value="129.90">Vinílico Colado 2mm (A partir de R$ 129,90/m²)</option>
+            <option value="169.90">Vinílico Clicado (A partir de R$ 169,90/m²)</option>
+            <option value="119.90">Laminado Resistente à Água (A partir de R$ 119,90/m²)</option>
+        </select>
+    </div>
 
-    <script>
-        function calcularOrcamento() {
-            // Inputs
-            const metragemInput = document.getElementById('metragem');
-            const metragem = parseFloat(metragemInput.value);
-            const modeloSelect = document.getElementById('modelo');
-            const precoModelo = parseFloat(modeloSelect.value);
-            const modeloNome = modeloSelect.options[modeloSelect.selectedIndex].text;
-            const temRodape = document.getElementById('rodape').checked;
-            
-            // Dados extras para o Zap
-            const pisoAtual = document.getElementById('piso-atual').value;
-            const nivelamento = document.getElementById('nivelamento').value;
+    <div class="form-group">
+        <label><i class="fas fa-border-all"></i> Tipo de Rodapé:</label>
+        <select id="tipoRodape">
+            <option value="0">Sem rodapé</option>
+            <option value="39.90">Poliestireno 7cm x 1,5cm (R$ 39,90/ml)</option>
+            <option value="42.90">Poliestireno 10cm x 1,5cm (R$ 42,90/ml)</option>
+            <option value="52.90">Poliestireno 15cm x 1,5cm (R$ 52,90/ml)</option>
+        </select>
+    </div>
 
-            // Validação
-            if (!metragem || metragem <= 0) {
-                alert("Por favor, insira uma metragem válida.");
-                metragemInput.focus();
-                return;
-            }
+    <button class="btn-calc" onclick="calcular()">Calcular Orçamento</button>
+</div>
 
-            // Lógica de Cálculo (Baseada no Index Antigo)
-            // Total = (Metragem * Preço Piso)
-            let total = metragem * precoModelo;
+<div id="modalResult">
+    <div class="modal-content">
+        <h2>Seu Orçamento Estimado</h2>
+        <div class="price-tag" id="valorFinal">R$ 0,00</div>
+        <p style="font-size: 0.8rem; color: #666; margin-bottom: 20px;">
+            *Incluso instalação e materiais básicos. Valor sujeito a avaliação técnica.
+        </p>
+        <a href="#" id="linkZap" class="btn-zap" target="_blank">
+            <i class="fab fa-whatsapp"></i> Falar com Especialista
+        </a>
+        <br><br>
+        <button onclick="fecharModal()" style="background:none; border:none; color:#999; cursor:pointer;">Fechar</button>
+    </div>
+</div>
 
-            // Lógica de Rodapé (Custo estimado linear ~ equivalente a area para calculo rapido ou usar valor fixo)
-            // No seu index antigo, usava-se uma lógica. Aqui mantive a lógica padrão de adicionar ao total.
-            // Assumindo R$ 35,90 por metro.
-            if (temRodape) {
-                total += (metragem * 35.90);
-            }
+<script>
+    function calcular() {
+        const metragem = parseFloat(document.getElementById('metragem').value);
+        const precoPiso = parseFloat(document.getElementById('modelo').value);
+        const precoMLRodape = parseFloat(document.getElementById('tipoRodape').value);
 
-            // Formatação
-            const valorFormatado = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
-            document.getElementById('valorFinal').innerText = valorFormatado;
-
-            // Gerar Link do WhatsApp (Texto igual ao antigo, mas bonito)
-            const textoZap = `Olá, Rennovare! Fiz uma simulação no site:\n\n` +
-                             `📐 *Metragem:* ${metragem}m²\n` +
-                             `🪵 *Modelo:* ${modeloNome.split('(')[0].trim()}\n` +
-                             `📏 *Rodapé:* ${temRodape ? 'Sim (Incluído)' : 'Não'}\n` +
-                             `💰 *Valor Estimado:* ${valorFormatado}\n\n` +
-                             `ℹ️ *Detalhes do Local:*\n` +
-                             `- Piso Atual: ${pisoAtual}\n` +
-                             `- Nivelamento: ${nivelamento}\n\n` +
-                             `Gostaria de agendar uma visita técnica para validar.`;
-            
-            const numeroZap = "554796550517"; // Seu número
-            const link = `https://wa.me/${numeroZap}?text=${encodeURIComponent(textoZap)}`;
-            
-            document.getElementById('linkZap').href = link;
-
-            // Abrir Modal
-            document.getElementById('modalResult').style.display = 'flex';
+        if (!metragem || metragem <= 0) {
+            alert("Por favor, insira uma metragem válida.");
+            return;
         }
 
-        function fecharModal() {
-            document.getElementById('modalResult').style.display = 'none';
+        // Cálculo do Piso
+        let total = metragem * precoPiso;
+
+        // Cálculo Estimado de Rodapé (Perímetro aproximado: raiz da área * 4)
+        if (precoMLRodape > 0) {
+            const perimetroEstimado = Math.sqrt(metragem) * 4;
+            total += (perimetroEstimado * precoMLRodape);
         }
 
-        function fecharModalSeClicarFora(event) {
-            const modal = document.getElementById('modalResult');
-            if (event.target == modal) {
-                fecharModal();
-            }
+        const valorFormatado = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+        document.getElementById('valorFinal').innerText = valorFormatado;
+
+        // Link do WhatsApp
+        const modeloNome = document.getElementById('modelo').options[document.getElementById('modelo').selectedIndex].text;
+        const rodapeNome = document.getElementById('tipoRodape').options[document.getElementById('tipoRodape').selectedIndex].text;
+        
+        const textoZap = `Olá, Rennovare! Fiz uma simulação de orçamento:\n\n` +
+                         `📐 *Metragem:* ${metragem}m²\n` +
+                         `🪵 *Piso:* ${modeloNome}\n` +
+                         `📏 *Rodapé:* ${rodapeNome}\n` +
+                         `💰 *Total Estimado:* ${valorFormatado}\n\n` +
+                         `Gostaria de agendar uma visita técnica.`;
+
+        const link = `https://wa.me/554796550517?text=${encodeURIComponent(textoZap)}`;
+        document.getElementById('linkZap').href = link;
+        document.getElementById('modalResult').style.display = 'flex';
+        
+        // Disparo de evento do Pixel (opcional para conversão)
+        if(typeof fbq === 'function') {
+            fbq('track', 'Lead', { value: total, currency: 'BRL' });
         }
-    </script>
+    }
+
+    function fecharModal() {
+        document.getElementById('modalResult').style.display = 'none';
+    }
+</script>
+
 </body>
 </html>
