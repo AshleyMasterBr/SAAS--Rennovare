@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Orçamento Online | Rennovare Pisos</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-
+    
     <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -24,7 +22,7 @@
     /></noscript>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+
     <style>
         /* --- RESET & BASE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -32,10 +30,10 @@
         h1, h2, h3 { font-family: 'Montserrat', sans-serif; font-weight: 700; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         
-        /* Cores da Marca - RENNOVARE (Cinza e Dourado) */
+        /* Cores da Marca - RENNOVARE (Prata Sofisticado) */
         :root {
-            --primary: #D4AF37; /* Dourado Premium */
-            --secondary: #333333; /* Cinza Escuro/Chumbo */
+            --primary: #A8A9AD; /* Prata Sofisticado */
+            --secondary: #1A1A1B; /* Grafite/Chumbo */
             --accent: #25D366; 
             --white: #ffffff;
         }
@@ -62,7 +60,7 @@
 
         /* --- HERO SECTION --- */
         .hero { 
-            background: linear-gradient(rgba(51, 51, 51, 0.8), rgba(51, 51, 51, 0.8)), url('fundo.jpg'); 
+            background: linear-gradient(rgba(26, 26, 27, 0.85), rgba(26, 26, 27, 0.85)), url('fundo.jpg'); 
             background-size: cover; background-position: center; 
             min-height: 100vh;
             display: flex; align-items: center; justify-content: center;
@@ -80,7 +78,7 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.4);
             max-width: 500px; margin: 0 auto;
             text-align: left;
-            border-top: 5px solid var(--primary); /* Detalhe Dourado */
+            border-top: 5px solid var(--primary);
         }
         .form-group { margin-bottom: 12px; }
         .form-group label { display: block; font-weight: 600; margin-bottom: 5px; font-size: 0.85rem; color: #555; }
@@ -88,11 +86,11 @@
         .form-group input:focus, .form-group select:focus { border-color: var(--primary); background: #fff; }
         
         .btn-calc { 
-            width: 100%; background: var(--primary); color: white; 
-            border: none; padding: 15px; font-size: 1rem; font-weight: 700; text-transform: uppercase; 
+            width: 100%; background: var(--secondary); color: var(--white); 
+            border: 1px solid var(--primary); padding: 15px; font-size: 1rem; font-weight: 700; text-transform: uppercase; 
             border-radius: 8px; cursor: pointer; transition: 0.3s; margin-top: 10px;
         }
-        .btn-calc:hover { background: #b59026; transform: translateY(-2px); }
+        .btn-calc:hover { background: var(--primary); color: var(--secondary); transform: translateY(-2px); }
 
         /* --- MODAL (Resultado) --- */
         .modal-overlay {
@@ -210,28 +208,19 @@
                 <div class="form-group">
                     <label>Modelo preferido?</label>
                     <select id="modelo">
-                        <optgroup label="Laminados Quick-Step">
-                            <option value="99.90">Première (R$ 99,90/m²)</option>
-                            <option value="109.90">Classic (R$ 109,90/m²)</option>
-                            <option value="119.90">Smart (R$ 119,90/m²)</option>
-                            <option value="136.90">Eligna Wide (R$ 136,90/m²)</option>
-                            <option value="138.90">Vision (R$ 138,90/m²)</option>
-                            <option value="212.90">Impressive (R$ 212,90/m²)</option>
+                        <optgroup label="Laminados">
+                            <option value="119.90">Laminado Resistente à Água (R$ 119,90/m²)</option>
                         </optgroup>
                         <optgroup label="Pisos Vinílicos">
-                            <option value="128.90">Pix 2mm (R$ 128,90/m²)</option>
-                            <option value="129.90">Casa Grassi 2mm (R$ 129,90/m²)</option>
-                            <option value="137.90">Vinil Design 2mm (R$ 137,90/m²)</option>
-                            <option value="143.90">RealFloor 2mm (R$ 143,90/m²)</option>
-                            <option value="168.90">Casa Grassi 3mm (R$ 168,90/m²)</option>
-                            <option value="182.90">Casa Grassi 3mm Placa (R$ 182,90/m²)</option>
+                            <option value="129.90">Piso Vinílico Colado 2mm (R$ 129,90/m²)</option>
+                            <option value="169.90">Piso Vinílico Clicado (R$ 169,90/m²)</option>
                         </optgroup>
                     </select>
                 </div>
 
                 <div class="form-group" style="display:flex; align-items:center; gap:10px; margin-top: 5px;">
                     <input type="checkbox" id="rodape" style="width:20px;">
-                    <label for="rodape" style="margin:0;">Incluir Rodapé (A partir de R$ 35,90/m)</label>
+                    <label for="rodape" style="margin:0;">Incluir Rodapé (A partir de R$ 39,90/m)</label>
                 </div>
 
                 <button class="btn-calc" onclick="calcular()">VER PREÇO ESTIMADO</button>
@@ -330,8 +319,8 @@
 
             let total = metragem * modeloPreco;
             if (temRodape) {
-                // Média do Rodapé Scandian/Pix 7cm
-                total += (metragem * 35.90); 
+                // Preço do Rodapé de poliestireno 7cm (Base inicial)
+                total += (metragem * 39.90); 
             }
 
             const valorFormatado = total.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
@@ -351,6 +340,10 @@
             const link = `https://wa.me/${numeroZap}?text=${encodeURIComponent(textoZap)}`;
             document.getElementById('linkZap').href = link;
             document.getElementById('modalResult').style.display = 'flex';
+
+            if(typeof fbq === 'function') {
+                fbq('track', 'Lead', { value: total, currency: 'BRL' });
+            }
         }
 
         function fecharModal() {
@@ -366,5 +359,3 @@
     </script>
 </body>
 </html>
-
-
